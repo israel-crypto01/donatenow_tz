@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DONATE NOW Tanzania | Give Hope To Children In Need</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   RESET & VARIABLES
+═══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1B5E20;
+  --green-mid:#2E7D32;
+  --green-light:#4CAF50;
+  --yellow:#FFD600;
+  --yellow-light:#FFF176;
+  --orange:#E65100;
+  --orange-btn:#FF6F00;
+  --white:#FFFFFF;
+  --off-white:#F9F6F0;
+  --text-dark:#1A1A1A;
+  --text-mid:#444444;
+  --text-muted:#777777;
+  --border:#E0E0E0;
+  --font-head:'Playfair Display',serif;
+  --font-body:'Inter',sans-serif;
+  --r:8px; --r-lg:16px; --r-xl:24px;
+  --shadow:0 4px 24px rgba(0,0,0,.12);
+  --shadow-lg:0 12px 48px rgba(0,0,0,.18);
+  --transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--text-dark);background:#fff;overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none}
+ul{list-style:none}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#f1f1f1}
+::-webkit-scrollbar-thumb{background:var(--green);border-radius:2px}
+
+/* ═══════════════════════════════════════════
+   UTILITY
+═══════════════════════════════════════════ */
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+.section-tag{font-family:var(--font-body);font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--green-light);margin-bottom:10px;display:block}
+.section-title{font-family:var(--font-head);font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;color:var(--text-dark)}
+.section-title em{font-style:italic;color:var(--green)}
+.section-desc{font-size:1rem;color:var(--text-muted);line-height:1.8;max-width:560px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-28px);transition:opacity .7s ease,transform .7s ease}
+.reveal-l.in{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal-r.in{opacity:1;transform:none}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:40px;font-size:.9rem;font-weight:700;transition:var(--transition);cursor:pointer;white-space:nowrap}
+.btn-orange{background:var(--orange-btn);color:#fff}
+.btn-orange:hover{background:var(--orange);transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,81,0,.35)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,94,32,.35)}
+.btn-outline-white{background:transparent;color:#fff;border:2px solid #fff}
+.btn-outline-white:hover{background:#fff;color:var(--green)}
+.btn-outline-green{background:transparent;color:var(--green);border:2px solid var(--green)}
+.btn-outline-green:hover{background:var(--green);color:#fff}
+.btn-yellow{background:var(--yellow);color:var(--text-dark)}
+.btn-yellow:hover{background:var(--yellow-light);transform:translateY(-2px)}
+.btn-sm{padding:9px 20px;font-size:.82rem}
+.btn-video{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.5);color:#fff;padding:13px 24px;border-radius:40px;font-size:.9rem;font-weight:600;backdrop-filter:blur(4px);cursor:pointer;transition:var(--transition)}
+.btn-video:hover{background:rgba(255,255,255,.25)}
+.play-icon{width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.play-icon::after{content:'▶';font-size:.7rem;color:var(--green);margin-left:2px}
+
+/* ═══════════════════════════════════════════
+   TOPBAR
+═══════════════════════════════════════════ */
+.topbar{background:var(--green);padding:8px 0;display:none}
+@media(min-width:900px){.topbar{display:block}}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.85)}
+.topbar-links{display:flex;gap:20px}
+.topbar-links a{color:rgba(255,255,255,.85);transition:color .2s}
+.topbar-links a:hover{color:#fff}
+
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+.navbar{background:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 2px 12px rgba(0,0,0,.08);transition:var(--transition)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 24px;height:70px;display:flex;align-items:center;gap:8px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-size:1.3rem;font-weight:900;color:var(--green);margin-right:auto;cursor:pointer}
+.nav-logo-icon{width:38px;height:38px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{padding:8px 14px;border-radius:6px;font-size:.88rem;font-weight:500;color:var(--text-mid);transition:var(--transition);cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--green);background:rgba(27,94,32,.06)}
+.nav-actions{display:flex;align-items:center;gap:8px;margin-left:12px}
+.nav-icon-btn{width:36px;height:36px;border-radius:50%;border:none;background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:var(--transition)}
+.nav-icon-btn:hover{background:var(--off-white)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:6px;cursor:pointer}
+.hamburger span{display:block;width:22px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--transition)}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero{min-height:100vh;background:var(--green);position:relative;overflow:hidden;display:flex;align-items:center}
+.hero-bg-img{position:absolute;right:0;top:0;width:60%;height:100%;object-fit:cover;object-position:center top}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(27,94,32,.97) 35%, rgba(27,94,32,.5) 65%, transparent 100%)}
+/* yellow decorative shape */
+.hero-yellow-block{position:absolute;bottom:0;left:0;width:320px;height:220px;background:var(--yellow);clip-path:polygon(0 100%,100% 100%,0 0);opacity:.25;pointer-events:none}
+.hero-star{position:absolute;top:18%;right:10%;color:var(--yellow);font-size:2.5rem;animation:spin-slow 8s linear infinite;pointer-events:none}
+@keyframes spin-slow{to{transform:rotate(360deg)}}
+.hero-content{position:relative;z-index:2;padding:140px 0 80px}
+.hero-tag-row{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.hero-npc-tag{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.7)}
+.hero-npc-line{width:36px;height:2px;background:var(--yellow)}
+.hero-h1{font-family:var(--font-head);font-size:clamp(3rem,6vw,5.5rem);font-weight:900;line-height:.95;color:#fff;margin-bottom:28px}
+.hero-h1 .underline-yellow{position:relative;display:inline-block}
+.hero-h1 .underline-yellow::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:5px;background:var(--yellow);border-radius:3px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+
+/* hero 3-card strip */
+.hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg)}
+.hero-card{position:relative;height:220px;overflow:hidden;cursor:pointer}
+.hero-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.hero-card:hover img{transform:scale(1.06)}
+.hero-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 55%)}
+.hero-card-content{position:absolute;bottom:0;left:0;right:0;padding:18px 20px;display:flex;justify-content:space-between;align-items:flex-end}
+.hero-card-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7);display:block;margin-bottom:5px}
+.hero-card-title{font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:#fff;line-height:1.3}
+.hero-card-arrow{width:36px;height:36px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--green);flex-shrink:0;font-weight:700;transition:var(--transition)}
+.hero-card:hover .hero-card-arrow{background:#fff;transform:scale(1.1)}
+
+/* ═══════════════════════════════════════════
+   PARTNERS STRIP
+═══════════════════════════════════════════ */
+.partners{padding:40px 0;background:#fff;border-bottom:1px solid var(--border)}
+.partners-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);text-align:center;margin-bottom:24px}
+.partners-logos{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.partner-logo{font-size:.9rem;font-weight:700;color:var(--text-muted);opacity:.6;transition:opacity .2s;white-space:nowrap}
+.partner-logo:hover{opacity:1;color:var(--green)}
+.partner-logo span{color:var(--green);font-style:italic}
+
+/* ═══════════════════════════════════════════
+   ABOUT / HELPING OTHERS
+═══════════════════════════════════════════ */
+.about-section{padding:100px 0;background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-images{position:relative}
+.about-img-main{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/3}
+.about-img-main img{width:100%;height:100%;object-fit:cover}
+.about-img-accent{position:absolute;bottom:-28px;right:-28px;width:200px;aspect-ratio:3/4;border-radius:var(--r-lg);overflow:hidden;border:5px solid #fff;box-shadow:var(--shadow)}
+.about-img-accent img{width:100%;height:100%;object-fit:cover}
+.about-quote-card{position:absolute;bottom:100px;left:-24px;background:#fff;border-radius:var(--r-lg);padding:18px 22px;box-shadow:var(--shadow);max-width:240px}
+.quote-text{font-size:.82rem;color:var(--text-muted);line-height:1.6;font-style:italic;margin-bottom:8px}
+.quote-author{font-size:.78rem;font-weight:700;color:var(--green)}
+.about-gift-tag{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--orange-btn);margin-bottom:8px}
+.about-progress{margin:24px 0}
+.prog-item{margin-bottom:14px}
+.prog-label{display:flex;justify-content:space-between;font-size:.85rem;font-weight:600;color:var(--text-dark);margin-bottom:6px}
+.prog-bar-bg{height:8px;background:#E8F5E9;border-radius:4px;overflow:hidden}
+.prog-bar-fill{height:100%;border-radius:4px;background:var(--green);transition:width 1.5s ease}
+.prog-bar-fill.yellow{background:var(--yellow)}
+
+/* ═══════════════════════════════════════════
+   DELIVERING SOLUTIONS
+═══════════════════════════════════════════ */
+.solutions-section{padding:100px 0;background:var(--green)}
+.solutions-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:56px}
+.solutions-head .section-title{color:#fff}
+.solutions-head .section-title em{color:var(--yellow)}
+.solutions-desc{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.8}
+.solutions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.solution-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;transition:var(--transition)}
+.solution-card:hover{background:rgba(255,255,255,.15);transform:translateY(-4px)}
+.sol-img{height:180px;overflow:hidden;position:relative}
+.sol-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.solution-card:hover .sol-img img{transform:scale(1.06)}
+.sol-body{padding:18px}
+.sol-title{font-family:var(--font-head);font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.3}
+.sol-desc{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.6}
+.solutions-btn-row{text-align:center;margin-top:44px}
+
+/* ═══════════════════════════════════════════
+   HELPING OTHERS IMPROVES WORLD (stats)
+═══════════════════════════════════════════ */
+.impact-section{padding:100px 0;background:var(--off-white)}
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.impact-img{position:relative}
+.impact-img-main{border-radius:var(--r-xl);overflow:hidden}
+.impact-img-main img{width:100%;object-fit:cover}
+.impact-stats-overlay{position:absolute;top:28px;right:-28px;background:#fff;border-radius:var(--r-lg);padding:22px 28px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:16px;min-width:220px}
+.impact-stat-item{text-align:center}
+.impact-stat-num{font-family:var(--font-head);font-size:1.6rem;font-weight:700;color:var(--green);display:block;line-height:1}
+.impact-stat-lbl{font-size:.72rem;color:var(--text-muted);margin-top:3px}
+.impact-pillars{display:flex;flex-direction:column;gap:14px;margin:28px 0}
+.impact-pillar{display:flex;align-items:flex-start;gap:14px;padding:16px;background:#fff;border-radius:var(--r);border-left:4px solid var(--green);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.impact-pillar-icon{font-size:1.5rem;flex-shrink:0}
+.impact-pillar strong{display:block;font-size:.9rem;color:var(--text-dark);margin-bottom:3px}
+.impact-pillar span{font-size:.8rem;color:var(--text-muted)}
+
+/* ═══════════════════════════════════════════
+   FEATURED CAMPAIGNS
+═══════════════════════════════════════════ */
+.campaigns-section{padding:100px 0;background:#fff}
+.campaigns-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px}
+.carousel-nav{display:flex;gap:8px}
+.car-nav-btn{width:42px;height:42px;border-radius:50%;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1rem;transition:var(--transition);display:flex;align-items:center;justify-content:center;color:var(--text-mid)}
+.car-nav-btn:hover{border-color:var(--green);color:var(--green);background:rgba(27,94,32,.05)}
+.campaigns-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.camp-card{border-radius:var(--r-lg);overflow:hidden;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.08);transition:var(--transition);cursor:pointer}
+.camp-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.camp-img-wrap{height:210px;overflow:hidden;position:relative}
+.camp-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.camp-card:hover .camp-img-wrap img{transform:scale(1.05)}
+.camp-cat-badge{position:absolute;top:14px;left:14px;padding:4px 12px;border-radius:100px;font-size:.7rem;font-weight:700;text-transform:uppercase}
+.badge-edu{background:var(--yellow);color:var(--text-dark)}
+.badge-health{background:#E8F5E9;color:var(--green)}
+.badge-water{background:#E3F2FD;color:#1565C0}
+.badge-food{background:#FFF8E1;color:#E65100}
+.badge-emer{background:#FFEBEE;color:#C62828}
+.camp-pct-badge{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700}
+.camp-body{padding:20px}
+.camp-raised-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:6px}
+.camp-title{font-family:var(--font-head);font-size:1.05rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.camp-desc{font-size:.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.camp-prog-bg{height:6px;background:#E8F5E9;border-radius:3px;overflow:hidden;margin-bottom:10px}
+.camp-prog-fill{height:100%;border-radius:3px;background:var(--green);transition:width 1.5s ease}
+.camp-meta{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border)}
+.camp-amount{font-size:.85rem;font-weight:700;color:var(--green);font-family:var(--font-head)}
+.camp-goal{font-size:.72rem;color:var(--text-muted)}
+.camp-actions{display:flex;gap:8px}
+.camp-btn{padding:8px 16px;border-radius:100px;font-size:.75rem;font-weight:700;transition:var(--transition);cursor:pointer}
+.camp-btn-donate{background:var(--orange-btn);color:#fff;border:none}
+.camp-btn-donate:hover{background:var(--orange)}
+.camp-btn-more{background:transparent;border:1.5px solid var(--border);color:var(--text-mid)}
+.camp-btn-more:hover{border-color:var(--green);color:var(--green)}
+
+/* ═══════════════════════════════════════════
+   FEATURED STORY (full-width green)
+═══════════════════════════════════════════ */
+.featured-story{background:var(--green);padding:100px 0;position:relative;overflow:hidden}
+.story-deco{position:absolute;bottom:0;right:0;width:40%;height:80%;opacity:.08;background:url('https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=800') center/cover;border-radius:var(--r-xl) 0 0 0}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:2}
+.story-tag{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--yellow);margin-bottom:12px;display:block}
+.story-title{font-family:var(--font-head);font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:18px}
+.story-desc{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.8;margin-bottom:28px}
+.story-img{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/3}
+.story-img img{width:100%;height:100%;object-fit:cover}
+
+/* ═══════════════════════════════════════════
+   LATEST NEWS
+═══════════════════════════════════════════ */
+.news-section{padding:100px 0;background:#fff}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.news-card{border-radius:var(--r-lg);overflow:hidden;background:#fff;border:1px solid var(--border);transition:var(--transition);cursor:pointer}
+.news-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.news-img{height:200px;overflow:hidden}
+.news-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.news-card:hover .news-img img{transform:scale(1.05)}
+.news-body{padding:20px}
+.news-meta{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.news-cat{font-size:.7rem;font-weight:700;text-transform:uppercase;color:var(--green);background:#E8F5E9;padding:3px 9px;border-radius:100px}
+.news-date{font-size:.72rem;color:var(--text-muted)}
+.news-title{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text-dark);line-height:1.35;margin-bottom:8px}
+.news-excerpt{font-size:.78rem;color:var(--text-muted);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;margin-top:12px;border-top:1px solid var(--border);font-size:.75rem;color:var(--text-muted)}
+.news-likes{display:flex;align-items:center;gap:4px}
+
+/* ═══════════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════════ */
+.testimonials{padding:80px 0;background:var(--off-white)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.test-card{background:#fff;border-radius:var(--r-lg);padding:28px;box-shadow:0 4px 16px rgba(0,0,0,.06);transition:var(--transition)}
+.test-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.test-stars{color:var(--yellow);font-size:1rem;margin-bottom:14px;letter-spacing:2px}
+.test-quote{font-size:.9rem;color:var(--text-mid);line-height:1.75;font-style:italic;margin-bottom:20px}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-av{width:42px;height:42px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+.test-name{font-size:.875rem;font-weight:700;color:var(--text-dark)}
+.test-loc{font-size:.75rem;color:var(--text-muted)}
+
+/* ═══════════════════════════════════════════
+   PRICING / DONATION TIERS
+═══════════════════════════════════════════ */
+.pricing-section{padding:100px 0;background:#fff}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.price-card{border:2px solid var(--border);border-radius:var(--r-xl);padding:36px 28px;text-align:center;transition:var(--transition);position:relative;cursor:default}
+.price-card:hover{border-color:var(--green);box-shadow:var(--shadow)}
+.price-card.featured{border-color:var(--green);background:var(--green);transform:scale(1.03)}
+.price-card.featured .price-tier,.price-card.featured .price-amount,.price-card.featured .price-feat-item{color:#fff}
+.price-card.featured .price-desc{color:rgba(255,255,255,.8)}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--yellow);color:var(--text-dark);padding:5px 18px;border-radius:100px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.price-tier{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--green);margin-bottom:14px}
+.price-amount{font-family:var(--font-head);font-size:2.5rem;font-weight:700;color:var(--text-dark);margin-bottom:6px}
+.price-amount span{font-size:.9rem;font-weight:400;vertical-align:super}
+.price-amount sub{font-size:.8rem;font-weight:400;vertical-align:sub}
+.price-desc{font-size:.85rem;color:var(--text-muted);margin-bottom:20px;line-height:1.6}
+.price-feats{list-style:none;margin-bottom:28px;text-align:left}
+.price-feat-item{padding:7px 0;font-size:.85rem;color:var(--text-mid);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.price-feat-item::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.price-card.featured .price-feat-item{border-color:rgba(255,255,255,.2)}
+.price-card.featured .price-feat-item::before{color:var(--yellow)}
+
+/* ═══════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════ */
+.faq-section{padding:100px 0;background:var(--off-white)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.faq-image{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5}
+.faq-image img{width:100%;height:100%;object-fit:cover}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:32px}
+.faq-item{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);transition:border-color .25s}
+.faq-item.open{border-color:var(--green)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;cursor:pointer;font-weight:600;font-size:.95rem;color:var(--text-dark);background:none;border:none;width:100%;text-align:left;gap:12px}
+.faq-q-icon{width:28px;height:28px;border-radius:50%;background:var(--off-white);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--green);flex-shrink:0;transition:transform .3s,background .2s}
+.faq-item.open .faq-q-icon{transform:rotate(45deg);background:var(--green);color:#fff}
+.faq-ans{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-ans{max-height:180px}
+.faq-ans p{padding:0 22px 18px;font-size:.875rem;color:var(--text-muted);line-height:1.75}
+
+/* ═══════════════════════════════════════════
+   CTA / READY TO GROW
+═══════════════════════════════════════════ */
+.cta-section{padding:80px 0;background:var(--yellow);position:relative;overflow:hidden}
+.cta-deco{position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(27,94,32,.1);pointer-events:none}
+.cta-deco2{position:absolute;left:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:rgba(27,94,32,.08);pointer-events:none}
+.cta-inner{position:relative;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.cta-title{font-family:var(--font-head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--green);line-height:1.1}
+.cta-desc{font-size:.95rem;color:var(--green-mid);margin-top:10px;line-height:1.7}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+.contact-section{padding:100px 0;background:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:72px;align-items:start}
+.contact-info-card{background:var(--green);border-radius:var(--r-xl);padding:40px 36px;height:100%}
+.contact-info-card h3{font-family:var(--font-head);font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:8px}
+.contact-info-card p{color:rgba(255,255,255,.75);font-size:.875rem;margin-bottom:32px;line-height:1.7}
+.c-item{display:flex;gap:14px;margin-bottom:20px}
+.c-icon-wrap{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.c-item-text strong{display:block;font-size:.85rem;color:#fff;margin-bottom:2px}
+.c-item-text p{font-size:.8rem;color:rgba(255,255,255,.65);margin:0}
+.social-row{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.soc-btn{padding:7px 16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:100px;font-size:.78rem;color:#fff;cursor:pointer;transition:var(--transition)}
+.soc-btn:hover{background:rgba(255,255,255,.22)}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-grp{display:flex;flex-direction:column;gap:6px}
+.form-grp label{font-size:.8rem;font-weight:600;color:var(--text-dark)}
+.form-grp input,.form-grp select,.form-grp textarea{padding:13px 16px;background:var(--off-white);border:1.5px solid var(--border);border-radius:var(--r);font-size:.875rem;color:var(--text-dark);transition:var(--transition);font-family:var(--font-body)}
+.form-grp input:focus,.form-grp select:focus,.form-grp textarea:focus{outline:none;border-color:var(--green);background:#fff}
+.form-grp select option{background:#fff}
+.form-success{display:none;padding:14px;background:#E8F5E9;border:1.5px solid var(--green-light);border-radius:var(--r);font-size:.875rem;color:var(--green);text-align:center}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.footer{background:var(--text-dark);padding:72px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand p{font-size:.85rem;color:rgba(255,255,255,.55);margin:14px 0 20px;line-height:1.7}
+.footer-brand .nav-logo{color:#fff;margin-right:0}
+.footer-brand .nav-logo-icon{background:var(--green)}
+.pay-chips{display:flex;flex-wrap:wrap;gap:6px}
+.pay-chip{padding:4px 10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:4px;font-size:.72rem;color:rgba(255,255,255,.55)}
+.footer-col h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:16px}
+.footer-col a{display:block;font-size:.875rem;color:rgba(255,255,255,.55);padding:4px 0;cursor:pointer;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:.78rem;color:rgba(255,255,255,.35)}
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+.toast-wrap{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px}
+.toast{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;display:flex;align-items:center;gap:10px;min-width:260px;box-shadow:var(--shadow);animation:slide-toast .35s ease both;font-size:.85rem}
+@keyframes slide-toast{from{transform:translateX(120%);opacity:0}to{transform:none;opacity:1}}
+.toast.ok{border-left:4px solid var(--green)}
+.toast.err{border-left:4px solid #C62828}
+
+/* ═══════════════════════════════════════════
+   MOBILE NAV MENU
+═══════════════════════════════════════════ */
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);z-index:999;padding:16px 24px;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:11px 14px;border-radius:var(--r);font-size:.9rem;font-weight:500;color:var(--text-mid);cursor:pointer;transition:var(--transition)}
+.mobile-menu a:hover{background:var(--off-white);color:var(--green)}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:1024px){
+  .about-grid,.impact-grid,.story-grid,.faq-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
+  .solutions-grid{grid-template-columns:repeat(2,1fr)}
+  .campaigns-grid,.news-grid,.test-grid,.pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-cards{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .solutions-head{grid-template-columns:1fr}
+  .about-img-accent{display:none}
+}
+@media(max-width:768px){
+  .nav-links,.nav-actions .btn{display:none}
+  .hamburger{display:flex}
+  .hero-bg-img{width:100%;opacity:.25}
+  .campaigns-grid,.news-grid,.test-grid,.pricing-grid{grid-template-columns:1fr}
+  .hero-cards{display:none}
+  .solutions-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .cta-inner{flex-direction:column;text-align:center}
+  .campaigns-head{flex-direction:column;align-items:flex-start;gap:16px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .partners-logos{gap:24px}
+  .impact-stats-overlay{position:static;margin-top:16px;grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <marquee style="font-size: 0.9rem; margin-right: 20px; font-weight: 500;">Thank you for visiting our website. Your donation helps create positive change in the community and reach those who need assistance. Every contribution, whether large or small, is greatly valued and enables us to continue our work and make a meaningful impact.</marquee>
+
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">🌍</div>
+      DonateNow-<span style="color:var(--orange-btn)">TZ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#campaigns" onclick="smoothScroll('#campaigns')">Campaigns</a></li>
+      <li><a href="#about" onclick="smoothScroll('#about')">About Us</a></li>
+      <li><a onclick="showPage('dashboard')">Dashboard</a></li>
+      <li><a href="#news" onclick="smoothScroll('#news')">Blog</a></li>
+      <li><a href="#contact" onclick="smoothScroll('#contact')">Contacts</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" title="Search">🔍</button>
+      <button class="nav-icon-btn" title="Account" onclick="showPage('login')">👤</button>
+      <button class="btn btn-orange btn-sm" onclick="showPage('register')">DONATE NOW</button>
+    </div>
+    <div class="hamburger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="toggleMenu()">Home</a>
+  <a href="#campaigns" onclick="smoothScroll('#campaigns');toggleMenu()">Campaigns</a>
+  <a href="#about" onclick="smoothScroll('#about');toggleMenu()">About Us</a>
+  <a href="#news" onclick="smoothScroll('#news');toggleMenu()">Blog</a>
+  <a href="#contact" onclick="smoothScroll('#contact');toggleMenu()">Contact</a>
+  <a onclick="showPage('register');toggleMenu()">Register / Donate</a>
+  <a onclick="showPage('login');toggleMenu()">Login</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="home">
+  <img class="hero-bg-img" src="assets/image/18.png" alt="Children Tanzania">
+  <div class="hero-overlay"></div>
+  <div class="hero-yellow-block"></div>
+  <span class="hero-star">✦</span>
+  <div class="hero-content container" style="width:100%">
+    <div class="hero-tag-row">
+      <div class="hero-npc-line"></div>
+      <span class="hero-npc-tag">NON-PROFIT CHARITY · TANZANIA</span>
+    </div>
+    <h1 class="hero-h1 reveal">
+      Give <span class="underline-yellow">Hope</span><br>
+      To Children<br>
+      In Need.
+    </h1>
+    <div class="hero-ctas reveal" style="animation-delay:.15s;margin-top:28px">
+      <button class="btn btn-orange" onclick="smoothScroll('#campaigns')">DONATE NOW</button>
+      <button class="btn-video" onclick="switchGalleryTab('videos')">
+        <span class="play-icon"></span> VIDEO PLAYING THEME
+      </button>
+    </div>
+
+    <!-- 3-card strip -->
+    <div class="hero-cards reveal" style="animation-delay:.3s">
+      <div class="hero-card">
+        <img src="assets/image/3.png" alt="Community">
+        <div class="hero-card-overlay"></div>
+        <div class="hero-card-content">
+          <div>
+            <span class="hero-card-tag">COMMUNITY</span>
+            <div class="hero-card-title">Community</div>
+          </div>
+          <div class="hero-card-arrow">↗</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="assets/image/4.png" alt="Volunteer">
+        <div class="hero-card-overlay"></div>
+        <div class="hero-card-content">
+          <div>
+            <span class="hero-card-tag">VOLUNTEER</span>
+            <div class="hero-card-title">Take Action</div>
+          </div>
+          <div class="hero-card-arrow">↗</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="assets/image/8.png" alt="Future in Africa">
+        <div class="hero-card-overlay"></div>
+        <div class="hero-card-content">
+          <div>
+            <span class="hero-card-tag">STORY</span>
+            <div class="hero-card-title">Building A Future In Africa</div>
+          </div>
+          <div class="hero-card-arrow">↗</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS STRIP -->
+<div class="partners">
+  <div class="container">
+    <p class="partners-label">NON-PROFIT CHARITY</p>
+    <div class="partners-logos">
+      <span class="partner-logo">⚡ UNITY</span>
+      <span class="partner-logo">ART<span>.</span>academy</span>
+      <span class="partner-logo">W<span>🌍</span>RLD BLOOD DONOR</span>
+      <span class="partner-logo">🤝 SWEETKOME</span>
+      <span class="partner-logo">🌱 LIVING FUTURE</span>
+      <span class="partner-logo">✦ <span>Findr</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ ABOUT / HELPING OTHERS ══════════ -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images reveal-l">
+        <div class="about-img-main">
+          <img src="assets/image/21.png" alt="About">
+        </div>
+        <div class="about-img-accent">
+          <img src="assets/image/16.png" alt="Child">
+        </div>
+        <div class="about-quote-card">
+          <p class="quote-text">"This place is awesome and huge! Michael was super cool and very pleasant. If you want someone to deliver the sound to your project."</p>
+          <span class="quote-author">— Huye Merry, Donor</span>
+        </div>
+      </div>
+      <div class="reveal-r">
+        <span class="about-gift-tag">GIFT OF TZS 5,000</span>
+        <h2 class="section-title" style="font-size:clamp(2.2rem,4vw,3.2rem);margin-bottom:16px">
+          Helping Others<br><em>Improves World</em>
+        </h2>
+        <p class="section-desc">Ensures that kids living in poverty have access to life-changing benefits like medical care, educational support, life skills and job-training before they graduate.</p>
+        <div class="about-progress">
+          <div class="prog-item">
+            <div class="prog-label"><span>Save Water</span><span>59%</span></div>
+            <div class="prog-bar-bg"><div class="prog-bar-fill" data-width="59%"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-label"><span>Education</span><span>98%</span></div>
+            <div class="prog-bar-bg"><div class="prog-bar-fill" data-width="98%"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-label"><span>Health Care</span><span>76%</span></div>
+            <div class="prog-bar-bg"><div class="prog-bar-fill" data-width="76%"></div></div>
+          </div>
+        </div>
+        <button class="btn btn-green" onclick="smoothScroll('#about')">ABOUT US</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DELIVERING SOLUTIONS ══════════ -->
+<section class="solutions-section">
+  <div class="container">
+    <div class="solutions-head">
+      <div class="reveal-l">
+        <span class="section-tag" style="color:var(--yellow-light)">HOW WE HELP</span>
+        <h2 class="section-title" style="color:#fff;font-size:clamp(2rem,4vw,3rem)">Delivering <em>Solutions</em></h2>
+      </div>
+      <div class="reveal-r">
+        <p class="solutions-desc">We are a dedicated charity organisation focused on creating sustainable impact in communities. From education to healthcare, we aim to empower those in need with the tools to build a better future.</p>
+      </div>
+    </div>
+    <div class="solutions-grid">
+      <div class="solution-card reveal" style="transition-delay:.0s">
+        <div class="sol-img"><img src="assets/image/6.png" alt="Fight Poverty"></div>
+        <div class="sol-body">
+          <div class="sol-title">Fight Poverty Programs &amp; Service Children</div>
+          <p class="sol-desc">Provides nutritious food, wholesome food, funds, and vocational training to people.</p>
+        </div>
+      </div>
+      <div class="solution-card reveal" style="transition-delay:.1s">
+        <div class="sol-img"><img src="assets/image/8.png" alt="Education"></div>
+        <div class="sol-body">
+          <div class="sol-title">Bright Futures: Education for Every Child</div>
+          <p class="sol-desc">Provides nutritious food, wholesome food, funds, and vocational training to people.</p>
+        </div>
+      </div>
+      <div class="solution-card reveal" style="transition-delay:.2s">
+        <div class="sol-img"><img src="assets/image/7.png" alt="Feeding"></div>
+        <div class="sol-body">
+          <div class="sol-title">Nourish Hope Feeding Children in Crisis the World</div>
+          <p class="sol-desc">Provides nutritious food, wholesome food, funds, and vocational training to people.</p>
+        </div>
+      </div>
+      <div class="solution-card reveal" style="transition-delay:.3s">
+        <div class="sol-img"><img src="assets/image/14.png" alt="Shelter"></div>
+        <div class="sol-body">
+          <div class="sol-title">Safe and Sound Shelter for Children</div>
+          <p class="sol-desc">Provides nutritious food, wholesome food, funds, and vocational training to people.</p>
+        </div>
+      </div>
+    </div>
+    <div class="solutions-btn-row reveal">
+      <button class="btn btn-yellow" style="border-radius:8px;padding:14px 36px" onclick="smoothScroll('#campaigns')">EXPLORE MORE</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ IMPACT STATS ══════════ -->
+<section class="impact-section">
+  <div class="container">
+    <div class="impact-grid">
+      <div class="impact-image reveal-r">
+        <div class="impact-img-wrap">
+          <img src="assets/image/13.png" alt="Community Impact">
+        </div>
+        <div class="impact-stats-overlay">
+          <div class="impact-stat-item">
+            <span class="impact-stat-num" data-count="15">0</span><span class="impact-stat-num">K+</span>
+            <div class="impact-stat-lbl">Donors</div>
+          </div>
+          <div class="impact-stat-item">
+            <span class="impact-stat-num" data-count="850">0</span><span class="impact-stat-num">M</span>
+            <div class="impact-stat-lbl">TZS Raised</div>
+          </div>
+          <div class="impact-stat-item">
+            <span class="impact-stat-num" data-count="320">0</span>
+            <div class="impact-stat-lbl">Projects</div>
+          </div>
+          <div class="impact-stat-item">
+            <span class="impact-stat-num" data-count="26">0</span>
+            <div class="impact-stat-lbl">Regions</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-r">
+        <span class="section-tag">NON-PROFIT CHARITY</span>
+        <h2 class="section-title" style="margin-bottom:16px">Helping Others<br><em>Improves The World</em></h2>
+        <p class="section-desc">Our work spans education, health, clean water, food security, and emergency relief across all 26 regions of Tanzania.</p>
+        <div class="impact-pillars">
+          <div class="impact-pillar">
+            <span class="impact-pillar-icon">🏫</span>
+            <div><strong>Education Support</strong><span>School supplies, classrooms, and teacher training for 50,000+ students</span></div>
+          </div>
+          <div class="impact-pillar">
+            <span class="impact-pillar-icon">💧</span>
+            <div><strong>Clean Water Access</strong><span>Boreholes and water purification for 200+ villages</span></div>
+          </div>
+          <div class="impact-pillar">
+            <span class="impact-pillar-icon">🏥</span>
+            <div><strong>Health & Medical Care</strong><span>Mobile clinics and medical supplies reaching remote communities</span></div>
+          </div>
+        </div>
+        <button class="btn btn-green" onclick="smoothScroll('#campaigns')">DONATE NOW</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FEATURED CAMPAIGNS ══════════ -->
+<section class="campaigns-section" id="campaigns">
+  <div class="container">
+    <div class="campaigns-head">
+      <div class="reveal">
+        <span class="section-tag">OUR CAMPAIGNS</span>
+        <h2 class="section-title">Featured <em>Campaigns</em></h2>
+      </div>
+      <div class="carousel-nav">
+        <button class="car-nav-btn" onclick="slideCamps(-1)">←</button>
+        <button class="car-nav-btn" onclick="slideCamps(1)">→</button>
+      </div>
+    </div>
+    <div class="campaigns-grid" id="campsGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════ FEATURED STORY ══════════ -->
+<section class="featured-story">
+  <div class="story-deco"></div>
+  <div class="container">
+    <div class="story-grid">
+      <div class="reveal-l">
+        <span class="story-tag">OUR STORY</span>
+        <h2 class="story-title">Featured<br>Building A Future<br>In Africa</h2>
+        <p class="story-desc">In rural Tanzania, hundreds of children walk miles to attend school under trees, with no desks, no books, and no roof. Your donation directly builds classrooms and changes lives forever.</p>
+        <p class="story-desc" style="margin-top:8px">Funds raised: <strong style="color:var(--yellow)">TZS 36,000,000</strong> of TZS 50,000,000 goal &nbsp;·&nbsp; <strong style="color:var(--yellow)">72%</strong> complete</p>
+        <div style="height:6px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden;margin:16px 0 24px">
+          <div style="height:100%;width:72%;background:var(--yellow);border-radius:3px"></div>
+        </div>
+        <button class="btn btn-yellow" onclick="showPage('register')">READ MORE</button>
+      </div>
+      <div class="story-img reveal-r">
+        <img src="assets/image/8.png" alt="Featured Story">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ LATEST NEWS ══════════ -->
+<section class="news-section" id="news">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px" class="reveal">
+      <div>
+        <span class="section-tag">OUR STORY</span>
+        <h2 class="section-title">Latest <em>News</em></h2>
+      </div>
+      <button class="btn btn-outline-green btn-sm" onclick="showToast('All news coming soon!','ok')">VIEW ALL POSTS →</button>
+    </div>
+    <div class="news-grid">
+      <div class="news-card reveal" style="transition-delay:.05s">
+        <div class="news-img"><img src="assets/image/19.png" alt="News 1"></div>
+        <div class="news-body">
+          <div class="news-meta"><span class="news-cat">Education</span><span class="news-date">May 12, 2026</span></div>
+          <div class="news-title">How to Engage Millennials in Charity Work</div>
+          <p class="news-excerpt">A new generation of donors is reshaping philanthropy in Tanzania through digital platforms and mobile giving.</p>
+          <div class="news-footer"><div class="news-likes">❤️ 27 Likes</div><a onclick="showToast('Full article coming soon!','ok')" style="color:var(--green);font-weight:600;cursor:pointer">Read More →</a></div>
+        </div>
+      </div>
+      <div class="news-card reveal" style="transition-delay:.1s">
+        <div class="news-img"><img src="assets/image/20.png" alt="News 2"></div>
+        <div class="news-body">
+          <div class="news-meta"><span class="news-cat">Community</span><span class="news-date">May 8, 2026</span></div>
+          <div class="news-title">Creating Long-Term Partnerships with Grassroots Groups</div>
+          <p class="news-excerpt">Local partnerships have proven to be the most sustainable model for delivering aid in rural Tanzania.</p>
+          <div class="news-footer"><div class="news-likes">❤️ 31 Likes</div><a onclick="showToast('Full article coming soon!','ok')" style="color:var(--green);font-weight:600;cursor:pointer">Read More →</a></div>
+        </div>
+      </div>
+      <div class="news-card reveal" style="transition-delay:.15s">
+        <div class="news-img"><img src="assets/image/16.png" alt="News 3"></div>
+        <div class="news-body">
+          <div class="news-meta"><span class="news-cat">Volunteer</span><span class="news-date">Apr 29, 2026</span></div>
+          <div class="news-title">New Techniques in Tanzania to Engage Young Volunteers</div>
+          <p class="news-excerpt">Youth volunteering programmes are expanding across Dar es Salaam, Arusha and Mwanza regions.</p>
+          <div class="news-footer"><div class="news-likes">❤️ 19 Likes</div><a onclick="showToast('Full article coming soon!','ok')" style="color:var(--green);font-weight:600;cursor:pointer">Read More →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <span class="section-tag">WHAT DONORS SAY</span>
+      <h2 class="section-title">Community <em>Stories</em></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal" style="transition-delay:.05s">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"Nilichangia shule kupitia DONATE NOW na kuona jinsi maisha ya watoto yalivyobadilika — ilikuwa jambo la ajabu kabisa."</p>
+        <div class="test-author"><div class="test-av">AM</div><div><div class="test-name">Amina Mwangi</div><div class="test-loc">Dar es Salaam</div></div></div>
+      </div>
+      <div class="test-card reveal" style="transition-delay:.1s">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"The M-Pesa prompt appeared in seconds. Got my SMS and email receipt immediately. This is exactly what Tanzania needed."</p>
+        <div class="test-author"><div class="test-av" style="background:#1565C0">JK</div><div><div class="test-name">John Kimaro</div><div class="test-loc">Arusha</div></div></div>
+      </div>
+      <div class="test-card reveal" style="transition-delay:.15s">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"As an NGO, we raised TZS 50M in one month. The transparency dashboard showed donors exactly where every shilling went."</p>
+        <div class="test-author"><div class="test-av" style="background:#E65100">FN</div><div><div class="test-name">Fatuma Nyambo</div><div class="test-loc">Mwanza · NGO</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRICING ══════════ -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <span class="section-tag">CHOOSE YOUR IMPACT</span>
+      <h2 class="section-title">Donation <em>Tiers</em></h2>
+      <p class="section-desc" style="text-align:center;margin:12px auto 0">All amounts in Tanzanian Shilling (TZS) · Every shilingi makes a difference</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal" style="transition-delay:.05s">
+        <div class="price-tier">Msaada</div>
+        <div class="price-amount"><span>TZS</span> 5,000 <sub>/mo</sub></div>
+        <p class="price-desc">Support a child's school supplies for one week.</p>
+        <ul class="price-feats">
+          <li class="price-feat-item">Donor certificate</li>
+          <li class="price-feat-item">Monthly impact report</li>
+          <li class="price-feat-item">TRA tax receipt</li>
+          <li class="price-feat-item">Email updates</li>
+        </ul>
+        <button class="btn btn-outline-green" style="width:100%;justify-content:center;border-radius:8px" onclick="showPage('register')">Start Giving</button>
+      </div>
+      <div class="price-card featured reveal" style="transition-delay:.1s">
+        <div class="price-badge">🔥 Most Impactful</div>
+        <div class="price-tier" style="color:var(--yellow)">Nguvu</div>
+        <div class="price-amount" style="color:#fff"><span style="color:rgba(255,255,255,.7)">TZS</span> 25,000 <sub style="color:rgba(255,255,255,.7)">/mo</sub></div>
+        <p class="price-desc" style="color:rgba(255,255,255,.75)">Sponsor one student's complete education for one month.</p>
+        <ul class="price-feats" style="border-color:rgba(255,255,255,.15)">
+          <li class="price-feat-item">All Msaada benefits</li>
+          <li class="price-feat-item">Student progress reports</li>
+          <li class="price-feat-item">Community visit access</li>
+          <li class="price-feat-item">Priority SMS alerts</li>
+          <li class="price-feat-item">Named recognition</li>
+        </ul>
+        <button class="btn btn-yellow" style="width:100%;justify-content:center;border-radius:8px" onclick="showPage('register')">Start Giving</button>
+      </div>
+      <div class="price-card reveal" style="transition-delay:.15s">
+        <div class="price-tier">Mkombozi</div>
+        <div class="price-amount"><span>TZS</span> 100,000 <sub>/mo</sub></div>
+        <p class="price-desc">Transform an entire family's life — health, food, and education.</p>
+        <ul class="price-feats">
+          <li class="price-feat-item">All Nguvu benefits</li>
+          <li class="price-feat-item">Dedicated account manager</li>
+          <li class="price-feat-item">Quarterly site visits</li>
+          <li class="price-feat-item">Corporate recognition</li>
+          <li class="price-feat-item">Impact video feature</li>
+        </ul>
+        <button class="btn btn-outline-green" style="width:100%;justify-content:center;border-radius:8px" onclick="showPage('register')">Start Giving</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-image reveal-l">
+        <img src="assets/image/1.png" alt="FAQ">
+      </div>
+      <div class="reveal-r">
+        <span class="section-tag">COMMON QUESTIONS</span>
+        <h2 class="section-title" style="margin-bottom:8px">Frequently Asked <em>Questions</em></h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFAQ(this)"><span>How do I donate using M-Pesa?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-ans"><p>Register on our platform, choose a campaign, select M-Pesa, enter your phone number — you'll get an STK Push prompt within seconds. Confirm with your PIN and done. Receipt arrives by SMS and email.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFAQ(this)"><span>Is my donation secure?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-ans"><p>Yes. We use bank-grade TLS encryption, PDO prepared statements, CSRF tokens, and all payments go through BOT-regulated mobile money APIs. Passwords hashed with bcrypt (cost 12).</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFAQ(this)"><span>Which payment methods are accepted?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-ans"><p>M-Pesa (Vodacom), Airtel Money, Tigo Pesa, Halo Pesa, CRDB bank transfer, and NMB bank transfer. Diaspora donors can use Visa/Mastercard (coming soon).</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFAQ(this)"><span>Can I track where my money goes?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-ans"><p>Absolutely. Your donor dashboard shows real-time spending breakdowns, project status, beneficiary updates, and full audit trails for every donation you make.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFAQ(this)"><span>Do I get a receipt for tax purposes?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-ans"><p>Yes — every confirmed donation generates an automatic TRA-compliant receipt emailed within 60 seconds. Annual summaries available for tax deduction.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta-section">
+  <div class="cta-deco"></div><div class="cta-deco2"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <div class="reveal-l">
+        <h2 class="cta-title">Ready To Take Your<br>Business Growth To<br>The Next Level?</h2>
+        <p class="cta-desc">Join 15,000+ Tanzanians making a difference. Start with as little as TZS 1,000.</p>
+      </div>
+      <div class="cta-btns reveal-r">
+        <button class="btn btn-green" onclick="showPage('register')">🌱 DONATE NOW</button>
+        <button class="btn btn-outline-green" onclick="smoothScroll('#campaigns')">VIEW CAMPAIGNS →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px" class="reveal">
+      <span class="section-tag">GET IN TOUCH</span>
+      <h2 class="section-title">We're Here to <em>Help</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-card reveal-l">
+        <h3>Contact Information</h3>
+        <p>Reach us through any of these channels. We're available Monday–Friday, 8AM–6PM EAT.</p>
+        <div class="c-item"><div class="c-icon-wrap">📍</div><div class="c-item-text"><strong>Office Address</strong><p>Ohio Street, Dar es Salaam, Tanzania</p></div></div>
+        <div class="c-item"><div class="c-icon-wrap">📞</div><div class="c-item-text"><strong>Phone Number</strong><p>+255 754 000 000</p></div></div>
+        <div class="c-item"><div class="c-icon-wrap">📧</div><div class="c-item-text"><strong>Email Address</strong><p>support@donatenow.co.tz</p></div></div>
+        <div class="c-item"><div class="c-icon-wrap">⏰</div><div class="c-item-text"><strong>Working Hours</strong><p>Mon–Fri: 8:00 AM – 6:00 PM EAT</p></div></div>
+        <div class="social-row">
+          <span class="soc-btn">Facebook</span>
+          <span class="soc-btn">Twitter</span>
+          <span class="soc-btn">Instagram</span>
+          <span class="soc-btn">WhatsApp</span>
+        </div>
+      </div>
+      <form class="contact-form reveal-r" onsubmit="handleContact(event)">
+        <div class="form-row">
+          <div class="form-grp"><label>Full Name</label><input type="text" placeholder="Amina Mwangi" required></div>
+          <div class="form-grp"><label>Email Address</label><input type="email" placeholder="amina@example.com" required></div>
+        </div>
+        <div class="form-grp"><label>Subject</label>
+          <select><option>General Inquiry</option><option>Donation Support</option><option>Campaign Registration</option><option>Technical Issue</option><option>Partnership</option></select>
+        </div>
+        <div class="form-grp"><label>Message</label><textarea rows="6" placeholder="Andika ujumbe wako hapa..." required style="resize:vertical"></textarea></div>
+        <button type="submit" class="btn btn-green" style="border-radius:8px;padding:15px 36px">Send Message 📨</button>
+        <div class="form-success" id="contactSuccess">✅ Message sent! We'll reply within 24 hours. Asante sana!</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="color:#fff;cursor:default;margin-bottom:0">
+          <div class="nav-logo-icon">🌍</div>
+          DonateNow-<span style="color:var(--orange-btn)">TZ</span>
+        </div>
+        <p>Tanzania's trusted platform for transparent, mobile-money-native charitable giving. Pamoja Tunaweza — Together We Can.</p>
+        <div class="pay-chips">
+          <span class="pay-chip">M-Pesa</span><span class="pay-chip">Airtel</span>
+          <span class="pay-chip">Tigo</span><span class="pay-chip">CRDB</span><span class="pay-chip">NMB</span>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4>
+        <a href="#home" onclick="scrollToTop()">Home</a>
+        <a href="#campaigns" onclick="smoothScroll('#campaigns')">Campaigns</a>
+        <a href="#about" onclick="smoothScroll('#about')">About Us</a>
+        <a onclick="showPage('register')">Register</a>
+      </div>
+      <div class="footer-col"><h4>Resources</h4>
+        <a href="#faq" onclick="smoothScroll('#faq')">FAQ</a>
+        <a href="#news" onclick="smoothScroll('#news')">Blog</a>
+        <a href="#contact" onclick="smoothScroll('#contact')">Contact</a>
+        <a>Privacy Policy</a>
+      </div>
+      <div class="footer-col"><h4>Legal</h4>
+        <a>Terms of Service</a><a>BOT Compliance</a>
+        <a>TRA Guidelines</a><a>BRELA Registered</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 DonateNow-TZ | Giving Made Simple | BRELA Registered | BOT MFS Compliant</p>
+      <p>Built with HTML5 · CSS3 · PHP 8.2 · PostgreSQL 16 · XAMPP</p>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- VIDEO MODAL -->
+<style>
+.video-modal {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85); z-index: 9999;
+  display: none; align-items: center; justify-content: center;
+}
+.video-modal-content {
+  position: relative; width: 90%; max-width: 800px;
+}
+.close-video {
+  position: absolute; top: -40px; right: 0;
+  color: #fff; font-size: 30px; cursor: pointer;
+}
+</style>
+<div id="videoModal" class="video-modal" onclick="closeVideo()">
+  <div class="video-modal-content" onclick="event.stopPropagation()">
+    <span class="close-video" onclick="closeVideo()">&times;</span>
+    <video id="promoVideo" controls style="width: 100%; border-radius: 8px; outline: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+      <source src="assets/videos/no1 (1).mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+//  SCROLL REVEAL
+// ═══════════════════════════════════════════
+const revObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      const delay = parseFloat(e.target.style.transitionDelay || '0') * 1000;
+      setTimeout(() => e.target.classList.add('in'), delay);
+      revObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => revObs.observe(el));
+
+// ═══════════════════════════════════════════
+//  PROGRESS BARS
+// ═══════════════════════════════════════════
+const progObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.width = e.target.dataset.width || '0%';
+      progObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.prog-bar-fill, .camp-prog-fill').forEach(el => {
+  el.style.width = '0%';
+  progObs.observe(el);
+});
+
+// ═══════════════════════════════════════════
+//  COUNTER ANIMATION
+// ═══════════════════════════════════════════
+function animCount(el) {
+  const target = +el.dataset.count;
+  let cur = 0; const step = target / (1800 / 16);
+  const t = setInterval(() => {
+    cur += step; if (cur >= target) { cur = target; clearInterval(t); }
+    el.textContent = Math.floor(cur).toLocaleString();
+  }, 16);
+}
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animCount(e.target); cntObs.unobserve(e.target); } });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => cntObs.observe(el));
+
+// ═══════════════════════════════════════════
+//  NAVBAR SCROLL
+// ═══════════════════════════════════════════
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.boxShadow =
+    scrollY > 60 ? '0 4px 24px rgba(0,0,0,.12)' : '0 2px 12px rgba(0,0,0,.08)';
+});
+
+// ═══════════════════════════════════════════
+//  MOBILE MENU
+// ═══════════════════════════════════════════
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+// ═══════════════════════════════════════════
+//  SMOOTH SCROLL
+// ═══════════════════════════════════════════
+function smoothScroll(selector) {
+  const el = document.querySelector(selector);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+// ═══════════════════════════════════════════
+//  FAQ
+// ═══════════════════════════════════════════
+function toggleFAQ(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ═══════════════════════════════════════════
+//  CAMPAIGNS DATA & RENDER
+// ═══════════════════════════════════════════
+const campData = [
+  { title:'Dodoma Primary School Classrooms', desc:'Help build 3 new classrooms for 120 students currently studying under trees in Dodoma region.', cat:'education', region:'Dodoma', goal:50000000, raised:36000000, donors:842, days:18, img:'assets/image/9.png' },
+  { title:'Mwanza Clean Water Project', desc:'Provide safe drinking water to 500 families in 3 villages through boreholes and purification.', cat:'water', region:'Mwanza', goal:50000000, raised:22500000, donors:534, days:25, img:'assets/image/10.png' },
+  { title:'Arusha Medical Supplies', desc:'Stock Arusha community clinic with essential medical supplies for 200+ patients per month.', cat:'health', region:'Arusha', goal:50000000, raised:44000000, donors:1204, days:7, img:'assets/image/11.png' },
+  { title:'Morogoro Flood Emergency Relief', desc:'200 families displaced by floods urgently need food, shelter, and medical aid in Morogoro.', cat:'emergency', region:'Morogoro', goal:80000000, raised:8200000, donors:310, days:3, img:'assets/image/15.png' },
+  { title:'Tabora Food Security Program', desc:'Support smallholder farmers in Tabora to grow food and feed 300 vulnerable families.', cat:'food', region:'Tabora', goal:30000000, raised:9300000, donors:289, days:40, img:'assets/image/5.png' },
+  { title:'Zanzibar Maternal Health Support', desc:'Improve maternal health outcomes for 150 mothers in rural Zanzibar with midwife training.', cat:'health', region:'Zanzibar', goal:25000000, raised:18000000, donors:421, days:15, img:'assets/image/1.png' },
+];
+
+const catBadge = { education:'badge-edu', health:'badge-health', water:'badge-water', food:'badge-food', emergency:'badge-emer' };
+const catLabel = { education:'Education', health:'Health', water:'Water', food:'Food', emergency:'Emergency' };
+let campOffset = 0;
+
+function renderCamps() {
+  const grid = document.getElementById('campsGrid');
+  const visible = campData.slice(campOffset, campOffset + 3);
+  const pCol = p => p >= 75 ? 'var(--green-light)' : p >= 40 ? '#FFC107' : 'var(--orange-btn)';
+  grid.innerHTML = visible.map(c => {
+    const pct = Math.round((c.raised / c.goal) * 100);
+    const rM = (c.raised / 1e6).toFixed(1) + 'M';
+    const gM = (c.goal / 1e6).toFixed(0) + 'M';
+    return `<div class="camp-card">
+      <div class="camp-img-wrap">
+        <img src="${c.img}" alt="${c.title}" loading="lazy">
+        <span class="camp-cat-badge ${catBadge[c.cat]}">${catLabel[c.cat]}</span>
+        <span class="camp-pct-badge">${pct}%</span>
+      </div>
+      <div class="camp-body">
+        <div class="camp-raised-label">TZS ${rM} raised of ${gM} goal</div>
+        <div class="camp-title">${c.title}</div>
+        <p class="camp-desc">${c.desc}</p>
+        <div class="camp-prog-bg"><div class="camp-prog-fill" data-width="${pct}%" style="background:${pCol(pct)}"></div></div>
+        <div class="camp-meta">
+          <div>
+            <div class="camp-amount">TZS ${rM}</div>
+            <div class="camp-goal">👥 ${c.donors.toLocaleString()} donors · ${c.days} days left</div>
+          </div>
+          <div class="camp-actions">
+            <button class="camp-btn camp-btn-donate" onclick="showToast('Redirecting to register...','ok');setTimeout(()=>showPage('register'),800)">Donate</button>
+            <button class="camp-btn camp-btn-more" onclick="showPage('campaigns')">More</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  // Re-animate progress bars
+  grid.querySelectorAll('.camp-prog-fill').forEach(el => {
+    el.style.width = '0%';
+    setTimeout(() => { el.style.width = el.dataset.width || '0%'; }, 100);
+  });
+}
+function slideCamps(dir) {
+  campOffset = (campOffset + dir * 3 + campData.length) % campData.length;
+  if (campOffset + 3 > campData.length) campOffset = 0;
+  renderCamps();
+}
+renderCamps();
+
+// ═══════════════════════════════════════════
+//  GALLERY TAB
+// ═══════════════════════════════════════════
+function switchGalleryTab(tab) {
+  const modal = document.getElementById('videoModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    document.getElementById('promoVideo').play();
+  }
+}
+function closeVideo() {
+  const modal = document.getElementById('videoModal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.getElementById('promoVideo').pause();
+  }
+}
+
+// ═══════════════════════════════════════════
+//  PAGE NAVIGATION (for linked pages)
+// ═══════════════════════════════════════════
+function showPage(name) {
+  if (name === 'register') {
+    window.location.href = 'register.html';
+  } else if (name === 'login') {
+    window.location.href = 'login.html';
+  } else if (name === 'campaigns') {
+    window.location.href = 'campaigns.html';
+  } else if (name === 'dashboard') {
+    if (!localStorage.getItem('userRole')) {
+      showToast('Please register or log in first.', 'ok');
+      setTimeout(() => { window.location.href = 'register.html'; }, 1500);
+    } else {
+      window.location.href = 'dashboard.html';
+    }
+  } else {
+    showToast('Navigating...', 'ok');
+  }
+}
+
+// ═══════════════════════════════════════════
+//  CONTACT FORM
+// ═══════════════════════════════════════════
+function handleContact(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send Message 📨'; btn.disabled = false;
+    document.getElementById('contactSuccess').style.display = 'block';
+    e.target.reset();
+    showToast('Message sent successfully! Asante ✅', 'ok');
+    setTimeout(() => document.getElementById('contactSuccess').style.display = 'none', 6000);
+  }, 1800);
+}
+
+// ═══════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════
+function showToast(msg, type = 'ok', dur = 4000) {
+  const icons = { ok: '✅', err: '❌' };
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.innerHTML = `<span>${icons[type]}</span><span style="flex:1">${msg}</span>`;
+  document.getElementById('toastWrap').appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, dur);
+}
+
+// ═══════════════════════════════════════════
+//  ANCHOR LINK INTERCEPT
+// ═══════════════════════════════════════════
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+console.log('%c🌍 DonateNow-TZ | Giving Made Simple','color:#1B5E20;font-size:18px;font-weight:900');
+console.log('%cPamoja Tunaweza — Together We Can','color:#FFD600;font-size:12px');
+</script>
+</body>
+</html>

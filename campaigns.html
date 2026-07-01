@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campaigns | DONATE NOW Tanzania</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#1B5E20;--green-mid:#2E7D32;--green-light:#4CAF50;--yellow:#FFD600;--orange:#E65100;--orange-btn:#FF6F00;--white:#fff;--off-white:#F9F6F0;--text-dark:#1A1A1A;--text-mid:#444;--text-muted:#777;--border:#E0E0E0;--font-head:'Playfair Display',serif;--font-body:'Inter',sans-serif;--r:8px;--r-lg:16px;--shadow:0 4px 24px rgba(0,0,0,.12);--transition:all .3s cubic-bezier(.4,0,.2,1)}
+body{font-family:var(--font-body);color:var(--text-dark);background:var(--off-white);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,select{font-family:inherit}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+.navbar{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.nav-inner{height:70px;display:flex;align-items:center;gap:18px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-size:1.3rem;font-weight:900;color:var(--green);margin-right:auto}
+.nav-logo-icon{width:38px;height:38px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.nav-links{display:flex;align-items:center;gap:8px}
+.nav-links a{padding:8px 14px;border-radius:6px;font-size:.88rem;font-weight:600;color:var(--text-mid);transition:var(--transition)}
+.nav-links a:hover,.nav-links a.active{color:var(--green);background:rgba(27,94,32,.06)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:40px;padding:12px 24px;font-size:.9rem;font-weight:700;cursor:pointer;transition:var(--transition);white-space:nowrap}
+.btn-green{background:var(--green);color:#fff}.btn-green:hover{background:var(--green-mid);transform:translateY(-2px)}
+.btn-orange{background:var(--orange-btn);color:#fff}.btn-orange:hover{background:var(--orange);transform:translateY(-2px)}
+.btn-outline{background:#fff;border:2px solid var(--green);color:var(--green)}.btn-outline:hover{background:var(--green);color:#fff}
+.hero{background:var(--green);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:440px;height:440px;background:var(--yellow);opacity:.18;border-radius:50%}
+.hero-inner{position:relative;z-index:1;padding:76px 0 64px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.section-tag{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--yellow);margin-bottom:12px;display:block}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.6rem,6vw,5rem);line-height:.98;margin-bottom:22px}
+.hero p{max-width:620px;color:rgba(255,255,255,.82);font-size:1.05rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-panel{background:#fff;color:var(--text-dark);border-radius:var(--r-lg);padding:24px;box-shadow:var(--shadow)}
+.panel-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.panel-stat div{background:var(--off-white);border-radius:var(--r);padding:14px;text-align:center}
+.panel-stat strong{display:block;color:var(--green);font-size:1.35rem}
+.toolbar{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;margin:34px 0 24px}
+.search{display:flex;gap:10px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.search input{border:0;outline:0;width:100%;font-size:.95rem;background:transparent}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--border);background:#fff;color:var(--text-mid);border-radius:999px;padding:9px 14px;font-weight:700;font-size:.82rem;cursor:pointer}
+.chip.active{background:var(--green);border-color:var(--green);color:#fff}
+.campaigns-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px}
+.camp-card{background:#fff;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);transition:var(--transition)}
+.camp-card:hover{transform:translateY(-5px);box-shadow:0 12px 48px rgba(0,0,0,.16)}
+.camp-img{height:210px;position:relative;overflow:hidden}.camp-img img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:14px;left:14px;padding:5px 12px;border-radius:999px;background:var(--yellow);color:var(--text-dark);font-size:.7rem;font-weight:800;text-transform:uppercase}
+.pct{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:50%;background:#fff;color:var(--green);display:flex;align-items:center;justify-content:center;font-weight:900}
+.camp-body{padding:22px}.camp-title{font-family:var(--font-head);font-size:1.2rem;font-weight:900;line-height:1.25;margin:8px 0}.camp-desc{font-size:.88rem;color:var(--text-muted);min-height:68px}
+.camp-meta{display:flex;justify-content:space-between;gap:12px;color:var(--text-muted);font-size:.8rem;margin:14px 0}
+.progress{height:8px;background:#E8F5E9;border-radius:999px;overflow:hidden;margin:14px 0}.progress span{display:block;height:100%;background:var(--green);border-radius:999px}
+.camp-actions{display:flex;gap:10px;margin-top:18px}.camp-actions .btn{flex:1;border-radius:8px;padding:10px 14px;font-size:.82rem}
+.cause-band{background:#fff;border-radius:var(--r-lg);padding:34px;margin:20px 0 70px;display:flex;align-items:center;justify-content:space-between;gap:24px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.cause-band h2{font-family:var(--font-head);font-size:2rem;color:var(--green)}.cause-band p{color:var(--text-muted);max-width:640px}
+.toast-wrap{position:fixed;right:20px;bottom:20px;z-index:100;display:flex;flex-direction:column;gap:10px}.toast{background:var(--green);color:#fff;padding:14px 18px;border-radius:8px;box-shadow:var(--shadow);font-weight:700}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}.campaigns-grid{grid-template-columns:1fr 1fr}.nav-links{display:none}.cause-band{align-items:flex-start;flex-direction:column}}
+@media(max-width:620px){.campaigns-grid{grid-template-columns:1fr}.panel-stat{grid-template-columns:1fr}.hero-inner{padding:50px 0}.hero-actions .btn{width:100%}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-icon">DN</span>DonateNow<span style="color:var(--orange-btn)">TZ</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="campaigns.html" class="active">Campaigns</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="register.html">Register</a>
+    </div>
+    <a class="btn btn-orange" href="register.html">Donate Now</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="section-tag">Browse Campaigns</span>
+      <h1>Verified causes across Tanzania.</h1>
+      <p>Find education, health, clean water, emergency, and food security campaigns in one transparent place with public progress, donor counts, and dashboard tracking.</p>
+      <div class="hero-actions">
+        <button class="btn btn-orange" onclick="scrollToCampaigns()">View Campaigns</button>
+        <button class="btn btn-outline" onclick="startCampaign()">Start a Campaign</button>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <strong style="font-family:var(--font-head);font-size:1.4rem;color:var(--green)">Live Impact</strong>
+      <p style="color:var(--text-muted);margin-top:8px">Campaign data stays shared between homepage, dashboard, and this campaign hub.</p>
+      <div class="panel-stat">
+        <div><strong id="statCampaigns">0</strong><span>Campaigns</span></div>
+        <div><strong id="statDonors">0</strong><span>Donors</span></div>
+        <div><strong id="statRaised">0M</strong><span>TZS raised</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container" id="campaignsArea">
+  <div class="toolbar">
+    <div class="search"><span>Search</span><input id="searchInput" type="search" placeholder="Search by campaign, region, category..." oninput="renderCampaigns()"></div>
+    <div class="filters" id="filters"></div>
+  </div>
+  <section class="campaigns-grid" id="campaignsGrid"></section>
+  <section class="cause-band">
+    <div>
+      <h2>Have a cause?</h2>
+      <p>Register as an NGO partner, create a campaign from the dashboard, and submit it for admin approval before it goes live to donors.</p>
+    </div>
+    <button class="btn btn-green" onclick="startCampaign()">Create Campaign</button>
+  </section>
+</main>
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+const defaultCampaigns = [
+  { id: 1, title: 'Dodoma Primary School Classrooms', description: 'Help build safe classrooms for 120 students currently studying in poor conditions.', category: 'Education', region: 'Dodoma', goal_amount: 50000000, raised_amount: 36000000, donor_count: 842, cover_image_url: 'assets/image/9.png' },
+  { id: 2, title: 'Mwanza Clean Water Project', description: 'Provide safe drinking water to families through boreholes and purification systems.', category: 'Water', region: 'Mwanza', goal_amount: 50000000, raised_amount: 22500000, donor_count: 534, cover_image_url: 'assets/image/10.png' },
+  { id: 3, title: 'Arusha Medical Supplies', description: 'Stock Arusha community clinic with essential medical supplies for 200+ patients per month.', category: 'Health', region: 'Arusha', goal_amount: 50000000, raised_amount: 44000000, donor_count: 1204, cover_image_url: 'assets/image/11.png' },
+  { id: 4, title: 'Morogoro Flood Emergency Relief', description: 'Support families displaced by floods with food, shelter, and medical aid.', category: 'Emergency', region: 'Morogoro', goal_amount: 80000000, raised_amount: 8200000, donor_count: 310, cover_image_url: 'assets/image/15.png' },
+  { id: 5, title: 'Tabora Food Security Program', description: 'Support smallholder farmers to grow food and feed vulnerable families.', category: 'Food', region: 'Tabora', goal_amount: 30000000, raised_amount: 9300000, donor_count: 289, cover_image_url: 'assets/image/5.png' },
+  { id: 6, title: 'Zanzibar Maternal Health Support', description: 'Improve maternal health outcomes through clinic supplies and mother support.', category: 'Health', region: 'Zanzibar', goal_amount: 25000000, raised_amount: 18000000, donor_count: 421, cover_image_url: 'assets/image/1.png' }
+];
+const categories = ['All','Education','Health','Water','Food','Emergency'];
+let activeCategory = 'All';
+
+function getCampaigns() {
+  const stored = JSON.parse(localStorage.getItem('localCampaigns') || 'null');
+  const list = stored && stored.length ? stored : defaultCampaigns;
+  return list.map((c, i) => ({
+    id: c.id || i + 1,
+    title: c.title || c.camp_title || 'Campaign',
+    description: c.description || c.desc || '',
+    category: normalizeCategory(c.category || c.cat || 'Other'),
+    region: c.region || 'Tanzania',
+    goal_amount: Number(c.goal_amount || c.goal || 1),
+    raised_amount: Number(c.raised_amount || c.raised || 0),
+    donor_count: Number(c.donor_count || c.donors || 0),
+    cover_image_url: c.cover_image_url || c.img || 'assets/image/9.png'
+  }));
+}
+
+function normalizeCategory(value) {
+  const v = String(value).toLowerCase();
+  if (v.includes('educ')) return 'Education';
+  if (v.includes('health')) return 'Health';
+  if (v.includes('water')) return 'Water';
+  if (v.includes('food')) return 'Food';
+  if (v.includes('emergency')) return 'Emergency';
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function renderFilters() {
+  document.getElementById('filters').innerHTML = categories.map(cat =>
+    `<button class="chip${cat === activeCategory ? ' active' : ''}" onclick="activeCategory='${cat}';renderFilters();renderCampaigns()">${cat}</button>`
+  ).join('');
+}
+
+function renderCampaigns() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const campaigns = getCampaigns().filter(c => {
+    const inCat = activeCategory === 'All' || c.category === activeCategory;
+    const inSearch = !q || [c.title, c.description, c.category, c.region].join(' ').toLowerCase().includes(q);
+    return inCat && inSearch;
+  });
+  const grid = document.getElementById('campaignsGrid');
+  grid.innerHTML = campaigns.length ? campaigns.map(c => {
+    const pct = Math.min(100, Math.round((c.raised_amount / Math.max(c.goal_amount, 1)) * 100));
+    return `<article class="camp-card">
+      <div class="camp-img"><img src="${c.cover_image_url}" alt="${escapeHtml(c.title)}" loading="lazy"><span class="badge">${escapeHtml(c.category)}</span><span class="pct">${pct}%</span></div>
+      <div class="camp-body">
+        <div style="font-size:.78rem;font-weight:800;color:var(--orange-btn);text-transform:uppercase">${escapeHtml(c.region)}</div>
+        <h2 class="camp-title">${escapeHtml(c.title)}</h2>
+        <p class="camp-desc">${escapeHtml(c.description)}</p>
+        <div class="progress"><span style="width:${pct}%"></span></div>
+        <div class="camp-meta"><span>TZS ${shortMoney(c.raised_amount)} raised</span><span>${c.donor_count.toLocaleString()} donors</span></div>
+        <div class="camp-actions"><button class="btn btn-green" onclick="donateToCampaign(${Number(c.id)})">Donate</button><button class="btn btn-outline" onclick="shareCampaign('${encodeURIComponent(c.title)}')">Share</button></div>
+      </div>
+    </article>`;
+  }).join('') : '<div style="grid-column:1/-1;text-align:center;padding:60px;background:#fff;border-radius:16px;color:var(--text-muted)">No campaigns found. Try another filter.</div>';
+  renderStats();
+}
+
+function renderStats() {
+  const all = getCampaigns();
+  const raised = all.reduce((sum, c) => sum + c.raised_amount, 0);
+  const donors = all.reduce((sum, c) => sum + c.donor_count, 0);
+  document.getElementById('statCampaigns').textContent = all.length.toLocaleString();
+  document.getElementById('statDonors').textContent = donors.toLocaleString();
+  document.getElementById('statRaised').textContent = shortMoney(raised);
+}
+
+function donateToCampaign(id) {
+  localStorage.setItem('preferredCampaignId', String(id));
+  if (!localStorage.getItem('currentUser') && !localStorage.getItem('userRole')) {
+    showToast('Please register or log in first.');
+    setTimeout(() => location.href = 'register.html', 900);
+  } else {
+    location.href = 'dashboard.html#payment';
+  }
+}
+
+function startCampaign() {
+  localStorage.setItem('requestedCampaignCreation', '1');
+  if (!localStorage.getItem('currentUser') && !localStorage.getItem('userRole')) {
+    showToast('Register as an NGO to create a campaign.');
+    setTimeout(() => location.href = 'register.html', 900);
+  } else {
+    location.href = 'dashboard.html#create-campaign';
+  }
+}
+
+function shareCampaign(encodedTitle) {
+  const url = `${location.origin}${location.pathname}?campaign=${encodedTitle}`;
+  if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => showToast('Campaign link copied.'));
+  else showToast(url);
+}
+
+function scrollToCampaigns() { document.getElementById('campaignsArea').scrollIntoView({ behavior: 'smooth' }); }
+function shortMoney(value) { return value >= 1000000 ? `${(value / 1000000).toFixed(value >= 10000000 ? 0 : 1)}M` : value.toLocaleString(); }
+function escapeHtml(value) { return String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch])); }
+function showToast(message) { const t = document.createElement('div'); t.className = 'toast'; t.textContent = message; document.getElementById('toastWrap').appendChild(t); setTimeout(() => t.remove(), 3000); }
+renderFilters();
+renderCampaigns();
+</script>
+</body>
+</html>

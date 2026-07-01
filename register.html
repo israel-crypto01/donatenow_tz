@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | DonateNow-TZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   RESET & VARIABLES
+═══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1B5E20;
+  --green-mid:#2E7D32;
+  --green-light:#4CAF50;
+  --yellow:#FFD600;
+  --yellow-light:#FFF176;
+  --orange:#E65100;
+  --orange-btn:#FF6F00;
+  --white:#FFFFFF;
+  --off-white:#F9F6F0;
+  --text-dark:#1A1A1A;
+  --text-mid:#444444;
+  --text-muted:#777777;
+  --border:#E0E0E0;
+  --font-head:'Playfair Display',serif;
+  --font-body:'Inter',sans-serif;
+  --r:8px; --r-lg:16px; --r-xl:24px;
+  --shadow:0 4px 24px rgba(0,0,0,.12);
+  --shadow-lg:0 12px 48px rgba(0,0,0,.18);
+  --transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+body{font-family:var(--font-body);color:var(--text-dark);background:#fff;overflow-x:hidden;line-height:1.6; height: 100vh; display: flex;}
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════ */
+.split-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.auth-image {
+    flex: 1;
+    position: relative;
+    background: var(--green);
+    overflow: hidden;
+    display: none;
+}
+
+@media(min-width: 900px) {
+    .auth-image {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px;
+    }
+}
+
+.auth-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+}
+
+.auth-image-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    max-width: 480px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 40px;
+    text-decoration: none;
+}
+
+.nav-logo-icon {
+    width: 48px;
+    height: 48px;
+    background: #fff;
+    color: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.auth-quote {
+    font-family: var(--font-head);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.auth-quote em {
+    color: var(--yellow);
+    font-style: italic;
+}
+
+.auth-desc {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.auth-form-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    background: var(--off-white);
+    position: relative;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 460px;
+    background: #fff;
+    padding: 48px;
+    border-radius: var(--r-xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.auth-box h2 {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.auth-box p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+
+.form-grp {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.form-grp label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-grp input {
+    padding: 14px 16px;
+    background: var(--off-white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    transition: var(--transition);
+    font-family: var(--font-body);
+}
+
+.form-grp input:focus {
+    outline: none;
+    border-color: var(--green);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+}
+
+.btn-green {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: var(--r);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 10px;
+}
+
+.btn-green:hover {
+    background: var(--green-mid);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27,94,32,.35);
+}
+
+.btn-green:disabled {
+    background: var(--text-muted);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.auth-footer a {
+    color: var(--green);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Spinner */
+.spinner {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.back-link {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    color: var(--green);
+}
+</style>
+</head>
+<body>
+
+<div class="split-layout">
+    <div class="auth-image">
+        <img src="assets/image/18.png" alt="Background">
+        <div class="auth-image-content">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌍</div>
+                DonateNow-<span style="color:var(--orange-btn)">TZ</span>
+            </a>
+            <h1 class="auth-quote">Join a community<br>making an impact.</h1>
+            <p class="auth-desc">Create your account to start donating, track your giving history, and receive verified updates from local NGOs.</p>
+        </div>
+    </div>
+    
+    <div class="auth-form-wrap">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <div class="auth-box">
+            <h2>Create Account</h2>
+            <p>Join the DonateNow-TZ community.</p>
+            
+            <form id="registerForm">
+                <div class="form-grp">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="E.g. Mimi Jum" required>
+                </div>
+                <div class="form-grp">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="mimi@example.com" required>
+                </div>
+                <div class="form-grp">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <div class="form-grp">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="+255 7XX XXX XXX">
+                </div>
+                <div class="form-grp">
+                    <label for="region">Region</label>
+                    <select id="region" required style="padding: 14px 16px; background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--r); font-size: 0.9rem; font-family: var(--font-body); color: var(--text-dark); transition: var(--transition);">
+                        <option value="" disabled selected>Select your region...</option>
+                        <option value="Dar es Salaam">Dar es Salaam</option>
+                        <option value="Arusha">Arusha</option>
+                        <option value="Mwanza">Mwanza</option>
+                        <option value="Dodoma">Dodoma</option>
+                        <option value="Zanzibar">Zanzibar</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-grp">
+                    <label for="role">I am registering as:</label>
+                    <select id="role" required style="padding: 14px 16px; background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--r); font-size: 0.9rem; font-family: var(--font-body); color: var(--text-dark); transition: var(--transition);">
+                        <option value="donor">Donor (Individual / Corporate)</option>
+                        <option value="ngo">NGO (Charity Organization)</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-green" id="submitBtn">
+                    <span id="btnText">Create Account</span>
+                    <div class="spinner" id="spinner"></div>
+                </button>
+            </form>
+            
+            <div class="auth-footer">
+                Already have an account? <a href="login.html">Log In</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function readJsonResponse(response) {
+    const text = await response.text();
+    try {
+        return JSON.parse(text);
+    } catch (e) {
+        throw new Error(text || 'Unexpected server response');
+    }
+}
+
+function queueWelcomeNotice(user) {
+    if (!user) return;
+    localStorage.setItem('pendingDashboardNotice', JSON.stringify({
+        type: 'welcome',
+        email: user.email || '',
+        created_at: new Date().toISOString()
+    }));
+}
+
+function saveLocalRegisteredUser(user) {
+    if (!user?.email) return;
+    const users = JSON.parse(localStorage.getItem('localUsers') || '[]')
+        .filter(u => (u.email || '').toLowerCase() !== user.email.toLowerCase());
+    users.unshift(user);
+    localStorage.setItem('localUsers', JSON.stringify(users));
+}
+
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const btn = document.getElementById('submitBtn');
+    const text = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const role = document.getElementById('role').value;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const phone = document.getElementById('phone').value.trim();
+    const region = document.getElementById('region').value;
+    const parts = name.split(/\s+/).filter(Boolean);
+    const localUser = {
+        first_name: parts[0] || 'DonateNow',
+        last_name: parts.slice(1).join(' ') || 'Supporter',
+        email,
+        password,
+        phone,
+        role,
+        region,
+        created_at: new Date().toLocaleString()
+    };
+    
+    btn.disabled = true;
+    text.textContent = 'Creating account...';
+    spinner.style.display = 'block';
+    
+    try {
+        const response = await fetch('backend/auth/register.php', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                first_name: parts[0] || '',
+                last_name: parts.slice(1).join(' ') || parts[0] || '',
+                email,
+                password,
+                phone,
+                role,
+                region
+            })
+        });
+        const data = await readJsonResponse(response);
+        if (!response.ok || !data.success) {
+            const details = data.errors ? Object.values(data.errors).join('\n') : '';
+            throw new Error([data.error || 'Registration failed', details].filter(Boolean).join('\n'));
+        }
+        saveLocalRegisteredUser({ ...localUser, ...data.user, password });
+        localStorage.setItem('currentUser', JSON.stringify(data.user));
+        localStorage.setItem('userRole', data.user.role);
+        localStorage.setItem('userName', `${data.user.first_name || ''} ${data.user.last_name || ''}`.trim());
+        queueWelcomeNotice(data.user);
+        window.location.href = 'dashboard.html';
+    } catch (err) {
+        saveLocalRegisteredUser(localUser);
+        const sessionUser = { ...localUser };
+        delete sessionUser.password;
+        localStorage.setItem('currentUser', JSON.stringify(sessionUser));
+        localStorage.setItem('userRole', sessionUser.role);
+        localStorage.setItem('userName', `${sessionUser.first_name} ${sessionUser.last_name}`.trim());
+        queueWelcomeNotice(sessionUser);
+        window.location.href = 'dashboard.html';
+    }
+});
+</script>
+</body>
+</html>
